@@ -1,0 +1,54 @@
+// practice/13.4-state-management/script.js
+// ===== Exercise 1: Centralized State =====
+const state = {
+    todos: [],
+    filter: "all",
+    theme: "light"
+};
+
+function setState(updates) {
+    Object.assign(state, updates);
+    saveState();
+    render();
+}
+
+function saveState() {
+    localStorage.setItem("appState", JSON.stringify(state));
+}
+
+function loadState() {
+    const saved = localStorage.getItem("appState");
+    if (saved) Object.assign(state, JSON.parse(saved));
+}
+
+function render() {
+    // draw UI from state
+    console.log("State now:", state);
+}
+
+// ===== Exercise 2: Observer Pattern =====
+const createStore = (initialState) => {
+    let state = initialState;
+    const listeners = [];
+
+    return {
+        getState: () => state,
+        setState: (updates) => {
+            state = { ...state, ...updates };
+            listeners.forEach(listener => listener(state));
+        },
+        subscribe: (listener) => {
+            listeners.push(listener);
+            return () => {
+                const index = listeners.indexOf(listener);
+                listeners.splice(index, 1);
+            };
+        }
+    };
+};
+
+const store = createStore({ count: 0 });
+const unsubscribe = store.subscribe(s => console.log("State changed:", s));
+store.setState({ count: 1 });
+store.setState({ count: 2 });
+unsubscribe();

@@ -47,3 +47,20 @@ function saveFilter(filter) {
 function loadFilter() {
     return load("filter", "all");
 }
+
+// todo/js/app.js (entry point)
+import { addTodo } from "./state.js";
+import { initUI } from "./ui.js";
+
+const form = document.getElementById("todo-form");
+const input = document.getElementById("todo-input");
+
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    addTodo(text);
+    input.value = "";
+});
+
+initUI();
