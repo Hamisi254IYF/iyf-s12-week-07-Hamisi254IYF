@@ -1,0 +1,24 @@
+{
+  "name": "iyf-s12-week-07-hamisi254iyf",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF/issues"
+  },
+  "homepage": "https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF#readme"
+}
