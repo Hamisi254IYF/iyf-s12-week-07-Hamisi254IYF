@@ -1,0 +1,41 @@
+// In practice/13.1-localstorage-notes/script.js
+function saveToStorage(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getFromStorage(key, defaultValue = null) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : defaultValue;
+}
+
+function removeFromStorage(key) {
+    localStorage.removeItem(key);
+}
+
+// practice/13.1-localstorage-notes/script.js
+const STORAGE_KEY = "notes";
+
+function renderNotes() {
+    const notes = getFromStorage(STORAGE_KEY, []);
+    const list = document.getElementById("notes-list");
+    list.innerHTML = "";
+    notes.forEach((note, i) => {
+        const li = document.createElement("li");
+        li.textContent = note;
+        list.appendChild(li);
+    });
+}
+
+document.getElementById("add-note").addEventListener("click", () => {
+    const input = document.getElementById("note-input");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const notes = getFromStorage(STORAGE_KEY, []);
+    notes.push(text);
+    saveToStorage(STORAGE_KEY, notes);
+    input.value = "";
+    renderNotes();
+});
+
+renderNotes();
