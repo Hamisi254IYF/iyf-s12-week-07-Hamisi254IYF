@@ -1,4 +1,4 @@
-{
+ {
   "name": "iyf-s12-week-07-hamisi254iyf",
   "version": "1.0.0",
   "description": "",
@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF/issues"
   },
-  "homepage": "https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF#readme"
+   "homepage": "https://github.com/Hamisi254IYF/iyf-s12-week-07-Hamisi254IYF#readme"
+  },
+"scripts": {
+    "lint": "eslint todo/js/ tests/",
+    "lint:fix": "eslint todo/js/ tests/ --fix",
+    "format": "prettier --write todo/js/ tests/",
+    "test": "vitest"
 }
+
